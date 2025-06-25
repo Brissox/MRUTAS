@@ -28,31 +28,31 @@ public class ruta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID_RUTA")
-    @Schema(description="aa")
+    @Schema(description="identificador de la ruta", example="1")
     private Long id_ruta;
 
     @Column(name="ID_ENVIO",nullable=false ,precision=10)
-    @Schema(description="aa")
+    @Schema(description="identificador del envio", example="1")
     private Long id_envio;
 
     @Column(name="ORIGEN",nullable = false,length = 100)
-    @Schema(description="aa")
+    @Schema(description="Ubicacion desde donde parte el envio", example="sucursal santiago")
     private String origen;
     
     @Column(name="DESTINO",nullable = false,length = 100)
-    @Schema(description="aa")
+    @Schema(description="ubicacion de termino del envio", example="siempre viva 123, la florida")
     private String destino;
     
     @Column(name="DISTANCIA_KM",nullable = true, precision=10, scale= 2)
-    @Schema(description="aa")
+    @Schema(description="distancia del recorrido en kilometros", example="50.52")
     private BigDecimal distancia_km;
 
     @Column(name="DURACION_ESTIMADA",nullable = false,length = 20)
-    @Schema(description="aa")
+    @Schema(description="tiempo de demora del envio", example="2horas")
     private String duracion_estimada;
     
     @Column(name="ESTADO",nullable = false,length = 20)
-    @Schema(description="aa")
+    @Schema(description="Estadp en el cual se encuentra el envio", example="en ruta/en preparacion/entregado")
     private String estado;
 
 }
