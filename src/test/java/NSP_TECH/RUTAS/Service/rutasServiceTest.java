@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.mockito.ArgumentMatchers.any;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -114,20 +116,41 @@ public class rutasServiceTest {
         verify(rutasrepository, times(1)).save(r);
 
     }
+    @Test
+    public void testEditarRuta(){
 
+        ruta rutaO = new ruta();
+        rutaO.setId_ruta(11L);
+        rutaO.setOrigen("Santiago");
+        rutaO.setDestino("Rancagua");
 
-/*
+        ruta rutaE = new ruta();
+        rutaE.setId_ruta(11L);
+        rutaE.setOrigen("Chile");
+        rutaE.setDestino("Noruega");
+
+        when(rutasrepository.save(any(ruta.class))).thenReturn(rutaE);
+        when(rutasrepository.existsById(11L)).thenReturn(true);
+        ruta resultado = rutasservices.GuardarRuta(rutaE);
+
+        assertNotNull(resultado);
+        assertEquals(11L, resultado.getId_ruta());
+        assertEquals("Chile", resultado.getOrigen());
+        assertEquals("Noruega", resultado.getDestino());
+
+        verify(rutasrepository, times(1)).save(rutaE);
+    }
 
     @Test
-    public void testEliminarEnvio(){
+    public void testEliminarRuta(){
         Long id = 11L;
-        doNothing().when(enviorepository).deleteById(id);
+        doNothing().when(rutasrepository).deleteById(id);
 
-        enviosservices.Eliminar***(id);
+        rutasservices.EliminarRuta(11L);
 
-        verify(enviosrepository.times(1)).deleteById(id);
+        verify(rutasrepository, times(1)).deleteById(id);
 
     }
-*/
+
 }
 

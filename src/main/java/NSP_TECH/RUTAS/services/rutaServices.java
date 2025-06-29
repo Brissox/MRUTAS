@@ -29,4 +29,8 @@ public class rutaServices {
 
     }
 
+    public void  EliminarRuta(Long id_ruta){
+        rutarepository.deleteById(id_ruta);
+    }
+
 }
